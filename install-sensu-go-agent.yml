@@ -3,7 +3,7 @@
 
   tasks:
     - name: Copy sensu repo file to /etc/repos
-      file:
+      copy:
         src: sensu_stable.repo
         dest: /etc/yum.repos.d/sensu_stable.repo
         owner: root
@@ -15,7 +15,7 @@
         state: installed
     
     - name: Copy agent.yml file
-      file:
+      copy:
         src: agent.yml
         dest: /etc/sensu/agent.yml
         owner: root
