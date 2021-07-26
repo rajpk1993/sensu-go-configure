@@ -1,1 +1,27 @@
 ---
+- hosts: all
+
+- name: Copy sensu repo file to /etc/repos
+  file:
+    src: sensu_stable.repo
+    dest: /etc/yum.repos.d/
+    owner: root
+    group: root
+    
+- name: Install sensu-go-agent
+  yum:
+    name: sensu-agent
+    state: installed
+    
+- name: Copy agent.yml file
+  file:
+    src: agent.yml
+    dest: /etc/sensu/
+    owner: root
+    group: root
+    
+- name: restart sensu service
+  service:
+    name: sensu-agent
+    state: restarted
+    enabled: yes
