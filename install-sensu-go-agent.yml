@@ -11,7 +11,7 @@
     
     - name: Install sensu-go-agent
       yum:
-        name: sensu-agent
+        name: sensu-go-agent
         state: installed
     
     - name: Copy agent.yml file
