@@ -5,7 +5,7 @@
     - name: Copy sensu repo file to /etc/repos
       file:
         src: sensu_stable.repo
-        dest: /etc/yum.repos.d/
+        dest: /etc/yum.repos.d/sensu_stable.repo
         owner: root
         group: root
     
@@ -17,7 +17,7 @@
     - name: Copy agent.yml file
       file:
         src: agent.yml
-        dest: /etc/sensu/
+        dest: /etc/sensu/agent.yml
         owner: root
         group: root
     
