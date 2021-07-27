@@ -1,0 +1,19 @@
+---
+- hosts: all
+
+  tasks:
+  
+    - name:  Wait until connection is reachable
+      wait_for_connection:
+        delay: 10
+        timeout: 300
+      
+    - name: restart sensu service
+      service:
+        name: sensu-agent
+        state: restarted
+        enabled: yes
+      register: servicestatus
+      unitl: servicestatus.status.ActiveState == "active"
+      retries: 15
+      delay: 30
