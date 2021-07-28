@@ -10,7 +10,7 @@
       
     - name: restart sensu service
       service:
-        name: sensu-agent
+        name: nginx
         state: restarted
         enabled: yes
       register: servicestatus
