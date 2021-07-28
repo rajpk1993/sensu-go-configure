@@ -2,15 +2,10 @@
 - hosts: all
 
   tasks:
-  
-    - name:  Wait until connection is reachable
-      wait_for_connection:
-        delay: 10
-        timeout: 300
       
     - name: restart sensu service
       service:
-        name: sensu-agent
+        name: nginx
         state: restarted
         enabled: yes
       register: servicestatus
