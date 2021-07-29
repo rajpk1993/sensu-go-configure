@@ -1,0 +1,6 @@
+path "kv/*" {
+	capabilities = ["read", "list"]
+}
+path "kv/AnsibleSSH" {
+	capabilities = ["read", "list"]
+}
