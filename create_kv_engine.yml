@@ -1,0 +1,22 @@
+--- 
+- hosts: all
+    
+    tasks:
+      - name: Enable kv vault engine
+        shell: vault secrets enable -version=2 kv
+        register: enabled_kvsecret 
+        
+      - name: Create a KV Engine
+        shell: vault kv put kv/AnsibleSSH username={{ user_name }} password= {{ password
+        register: kv_engine
+        
+      - name:
+        copy:
+          src: /hclfile
+          dest: /etc/vault/ansiblereadonly
+         
+         
+      - name:
+        shell: vault token create -policy=ansiblereadonly
+        register: policy_status
+        
